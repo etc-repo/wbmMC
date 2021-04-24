@@ -1,7 +1,6 @@
 package com.wbm.plugin.util;
 
 import java.util.List;
-import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -119,8 +118,12 @@ public class BroadcastTool {
 		Bukkit.getConsoleSender().sendMessage(msg);
 	}
 
-	public static void log(String msg) {
-		Bukkit.getLogger().log(Level.INFO, msg);
+	public static void info(String msg) {
+		Bukkit.getLogger().info(msg);
+	}
+
+	public static void warn(String msg) {
+		Bukkit.getLogger().warning(msg);
 	}
 
 	public static void debug(String msg) {

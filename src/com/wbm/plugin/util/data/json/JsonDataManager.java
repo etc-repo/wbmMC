@@ -36,11 +36,13 @@ public class JsonDataManager {
 
 	Map<String, JsonDataMember> members;
 
-	public JsonDataManager() {
+	File rootDir;
+
+	public JsonDataManager(File rootDir) {
 		this.members = new HashMap<>();
 		this.gson = new GsonBuilder().setPrettyPrinting().create();
 
-		this.makeResourceRootDir();
+		this.setRootDir(rootDir);
 	}
 
 	public void registerMember(JsonDataMember member) {
@@ -54,7 +56,7 @@ public class JsonDataManager {
 	public void distributeAllData() {
 		// 모든 멤버에게 데이터 배분
 		for (JsonDataMember member : this.members.values()) {
-			String jsonString = this.load(new File(member.getFileName()));
+			String jsonString = this.load(member.getFileName());
 			member.distributeData(jsonString);
 		}
 	}
@@ -63,16 +65,15 @@ public class JsonDataManager {
 		// 모든 멤버의 데이터 저장
 		for (JsonDataMember member : this.members.values()) {
 			Object obj = member.getData();
-			File f = new File(member.getFileName());
-			this.save(f, obj);
+			this.save(member.getFileName(), obj);
 		}
 	}
 
-	private void makeResourceRootDir() {
+	private void setRootDir(File rootDir) {
 		// data dir 생성
-		File dataDir = new File("data");
-		if (!dataDir.exists()) {
-			dataDir.mkdir();
+		this.rootDir = rootDir;
+		if (!this.rootDir.exists()) {
+			this.rootDir.mkdir();
 		}
 	}
 
@@ -83,16 +84,14 @@ public class JsonDataManager {
 	 * 
 	 * dataM.save(new File("test.json"), p);
 	 */
-	public void save(File file, Object obj) {
+	public void save(String fileName, Object obj) {
 		try {
-			File f = this.resourceFile(file);
+			File f = this.resourceFile(fileName);
 
-//			if (f.exists()) {
 			Writer writer = new FileWriter(f);
 			this.gson.toJson(obj, writer);
 
 			writer.close();
-//			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -111,35 +110,24 @@ public class JsonDataManager {
 	 * 
 	 * Player p = dataM.load(new File("test.json"), Player.class);
 	 */
-	public <T> T load(File file, Class<T> classOfT) {
+	public <T> T load(String fileName, Class<T> classOfT) {
 		/*
 		 * class 자체를 json파일로 사용할 때 사용하는 메소드
 		 */
-		T returnObj = null;
-		try {
-			File f = this.resourceFile(file);
-			Reader reader = new FileReader(f);
+		String jsonString = this.load(fileName);
+		return this.gson.fromJson(jsonString, (Type) classOfT);
 
-			Object obj = this.gson.fromJson(reader, Object.class);
-			String objString = this.gson.toJson(obj);
-
-			returnObj = this.gson.fromJson(objString, (Type) classOfT);
-
-			reader.close();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return returnObj;
 	}
 
-	public String load(File file) {
+	public String load(String fileName) {
 		/*
-		 * Object를 json파일로 사용할 때 사용하는 메소드
+		 * JsonObject 관련된 객체를 String으로 로드해서 사용할 때 사용하는 메소드
+		 * 
+		 * String 사용법: Test test = this.gson.fromJson("String", Test.class);
 		 */
 		String jsonString = null;
 		try {
-			File f = this.resourceFile(file);
+			File f = this.resourceFile(fileName);
 			if (!f.exists()) {
 				return null;
 			}
@@ -158,12 +146,12 @@ public class JsonDataManager {
 		return jsonString;
 	}
 
-	public File resourceFile(File file) {
-		return new File("data" + File.separator + file);
+	public File resourceFile(String fileName) {
+		return new File(this.rootDir, fileName);
 	}
 
-	public boolean exists(File file) {
-		return this.resourceFile(file).exists();
+	public boolean exists(String fileName) {
+		return this.resourceFile(fileName).exists();
 	}
 }
 //

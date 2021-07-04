@@ -13,6 +13,7 @@
 3. build path 클릭 
 4. Add External JARs... 클릭 
 5. wbmMC 클릭
-6. 사용 가능
+6. 플러그인 제작
+7. 버킷의 plugins 폴더에 wbmMC 넣고 실행
 
-❗ bukkit api까지 포함하고 있지 않습니
+❗ bukkit api까지 포함하고 있지 않습니다

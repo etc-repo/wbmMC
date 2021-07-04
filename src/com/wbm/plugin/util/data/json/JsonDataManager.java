@@ -8,10 +8,12 @@ import java.io.Reader;
 import java.io.Writer;
 import java.lang.reflect.Type;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 public class JsonDataManager {
 	/*
@@ -30,19 +32,70 @@ public class JsonDataManager {
 	 * 
 	 * json to map:
 	 * https://www.delftstack.com/ko/howto/java/how-to-convert-json-to-map-in-java/
+	 * 
 	 */
 
-	Gson gson;
+	private Gson gson;
 
-	Map<String, JsonDataMember> members;
+	private Map<String, JsonDataMember> members;
 
-	File rootDir;
+	private File rootDir;
+
+//	public static void main(String[] args) {
+//		JsonDataManager m = new JsonDataManager();
+//
+//	}
+//
+//	public JsonDataManager() {
+//		GsonBuilder gsonBuilder = new GsonBuilder();
+//
+//		// Map<String, Object>에 대해서 읽을 때(deserialize) Long과 Double구별하게 하는 Adapter 등록
+//		gsonBuilder.registerTypeAdapter(new TypeToken<Map<String, Object>>() {
+//		}.getType(), new MapDeserializerDoubleAsIntFix());
+//
+////		gsonBuilder.registerTypeAdapter(new TypeToken<Object>() {
+////		}.getType(), new CustomizedObjectTypeAdapter());
+//
+//		// gson 설정
+//		this.gson = gsonBuilder.setPrettyPrinting().create();
+//
+//		this.testLongOrDouble();
+//
+//	}
+
+	void testLongOrDouble() {
+		String json = "[{\"id\":1,\"quantity\":2.3,\"name\":\"apple\"}, {\"id\":3,\"quantity\":4.7,\"name\":\"orange\"}]";
+		List<Map<String, Object>> l = gson.fromJson(json, new TypeToken<List<Map<String, Object>>>() {
+		}.getType());
+
+		for (Map<String, Object> item : l)
+			System.out.println(item);
+
+		String serialized = gson.toJson(l);
+		System.out.println(serialized);
+	}
+
+
+	public Gson getGson() {
+		// Minecraft에서 Gson을 사용할 때(데이터 로드 or 데이터 저장) JsonDataManager class에서 Gson객체로 꼭
+		// 사용해야 함
+		// Long, Double구분을 위해서 (Map<String, Object> 만 구분 가능)
+		return this.gson;
+	}
 
 	public JsonDataManager(File rootDir) {
 		this.members = new HashMap<>();
-		this.gson = new GsonBuilder().setPrettyPrinting().create();
+		GsonBuilder gsonBuilder = new GsonBuilder();
+
+//		// Map<String, Object>에 대해서 읽을 때(deserialize) Long과 Double구별하게 하는 Adapter 등록
+//		gsonBuilder.registerTypeAdapter(new TypeToken<Map<String, Object>>() {
+//		}.getType(), new MapDeserializerDoubleAsIntFix());
+
+		// gson 설정
+		this.gson = gsonBuilder.setPrettyPrinting().create();
 
 		this.setRootDir(rootDir);
+
 	}
 
 	public void registerMember(JsonDataMember member) {
@@ -57,7 +110,7 @@ public class JsonDataManager {
 		// 모든 멤버에게 데이터 배분
 		for (JsonDataMember member : this.members.values()) {
 			String jsonString = this.load(member.getFileName());
-			member.distributeData(jsonString);
+			member.distributeData(this.gson, jsonString);
 		}
 	}
 

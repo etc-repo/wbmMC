@@ -8,6 +8,8 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 
+import com.wbm.plugin.Main;
+
 public class PlayerTool {
 	public static Collection<? extends Player> onlinePlayers() {
 		return Bukkit.getOnlinePlayers();

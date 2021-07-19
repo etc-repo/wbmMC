@@ -61,7 +61,7 @@ public class CoolDownManager {
 		}
 
 		// subject가 없어도 false
-		BroadcastTool.reportBug(subject + " is not registered!");
+		System.out.println("[Bug] "+subject + " is not registered!");
 		return false;
 	}
 
@@ -72,18 +72,18 @@ public class CoolDownManager {
 		return false;
 	}
 
-//    public static int getRemainingTime(String subject, Player p) {
-//	if(CoolDownManager.subjectTime.containsKey(subject)) {
-//	    if(CoolDownManager.subject.get(subject).contains(p)) {
-//		return CoolDownManager.subject.get(subject).get(p);
-//	    }else {
-//		return 0;
-//	    }
-//	}
-//	
-//	BroadcastTool.reportBug(subject + " is not registered!");
-//	return -1;
-//    }
+	//    public static int getRemainingTime(String subject, Player p) {
+	//	if(CoolDownManager.subjectTime.containsKey(subject)) {
+	//	    if(CoolDownManager.subject.get(subject).contains(p)) {
+	//		return CoolDownManager.subject.get(subject).get(p);
+	//	    }else {
+	//		return 0;
+	//	    }
+	//	}
+	//	
+	//	BroadcastTool.reportBug(subject + " is not registered!");
+	//	return -1;
+	//    }
 }
 
 //

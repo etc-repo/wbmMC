@@ -1,5 +1,6 @@
 package com.wbm.plugin.util;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Location;
@@ -88,6 +89,17 @@ public class BlockTool {
 				}
 			}
 		}
+	}
+
+	public static void fillRandomBlock(Location pos1, Location pos2, List<ItemStack> blocks) {
+		int blockCount = LocationTool.getAreaBlockCount(pos1, pos2);
+		List<ItemStack> randomBlocks = new ArrayList<ItemStack>();
+		for (int i = 0; i < blockCount; i++) {
+			ItemStack randomBlock = blocks.get((int) (Math.random() * blocks.size()));
+			randomBlocks.add(randomBlock);
+		}
+
+		BlockTool.setBlockWithItemStack(pos1, pos2, randomBlocks);
 	}
 
 	public static boolean isAllSameBlock(Location pos1, Location pos2) {

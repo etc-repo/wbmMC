@@ -56,9 +56,9 @@ public class LocationTool {
 		double targetY = target.getY();
 		double targetZ = target.getZ();
 
-		BroadcastTool.printConsoleMessage(pos1X + " " + targetX + " " + pos2X);
-		BroadcastTool.printConsoleMessage(pos1Y + " " + targetY + " " + pos2Y);
-		BroadcastTool.printConsoleMessage(pos1Z + " " + targetZ + " " + pos2Z);
+//		BroadcastTool.printConsoleMessage(pos1X + " " + targetX + " " + pos2X);
+//		BroadcastTool.printConsoleMessage(pos1Y + " " + targetY + " " + pos2Y);
+//		BroadcastTool.printConsoleMessage(pos1Z + " " + targetZ + " " + pos2Z);
 
 		if (MathTool.isBetween(pos1X, targetX, pos2X) && MathTool.isBetween(pos1Y, targetY, pos2Y)
 				&& MathTool.isBetween(pos1Z, targetZ, pos2Z)) {

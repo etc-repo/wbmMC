@@ -13,7 +13,6 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.wbm.plugin.util.BroadcastTool;
 import com.wbm.plugin.util.data.yaml.YamlManager;
 import com.wbm.plugin.util.data.yaml.YamlMember;
 
@@ -28,7 +27,7 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		instance = this;
-		BroadcastTool.info(ChatColor.GREEN + "wbmMC ON");
+		getLogger().info(ChatColor.GREEN + "wbmMC ON");
 
 //		this.config();
 //		this.customConfig();
@@ -186,7 +185,7 @@ public class Main extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
-		BroadcastTool.warn(ChatColor.RED + "wbmMC OFF");
+		getLogger().info(ChatColor.RED + "wbmMC OFF");
 	}
 
 }

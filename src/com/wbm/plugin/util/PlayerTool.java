@@ -22,9 +22,9 @@ public class PlayerTool {
 	public static void makePureState(Player p) {
 		// 1. 체력 회복
 		// 2. 배고픔 회복
-		// 3. hide 취소
-		// 4. glowing 취소
-		// 5. 포션 효과 취소
+		// 3. hide 제거
+		// 4. glowing 제거
+		// 5. 포션 효과 제거
 		heal(p);
 		removeAllState(p);
 	}

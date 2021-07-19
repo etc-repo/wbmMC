@@ -3,27 +3,20 @@ package com.wbm.plugin.util;
 import java.util.List;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class BroadcastTool {
 	// broadcast해줄때 앞에 "[serverName] " 붙여주는 기능
-	public static String prefix = "";
-	public static final boolean DEBUG = false;
-
-	public static void setMessagePrefix(String name) {
-		prefix = name;
-	}
 
 	// sendMessage
 	public static void sendMessage(Player p, String msg) {
-		p.sendMessage(prefix + msg);
+		p.sendMessage(msg);
 	}
 
 	// sendMessage
 	public static void sendMessage(CommandSender sender, String msg) {
-		sender.sendMessage(prefix + msg);
+		sender.sendMessage(msg);
 	}
 
 	public static void sendMessage(List<Player> many, String msg) {
@@ -89,51 +82,6 @@ public class BroadcastTool {
 		for (Player p : Bukkit.getOnlinePlayers()) {
 			sendTitle(p, title, subTitle, fadeIn, stay, fadeOut);
 		}
-	}
-
-//    public static void sendCountDownTitle(Player p, int n) {
-//	/*
-//	 * n ~ 1까지 delay초마다 카운트 다운
-//	 */
-//	    Bukkit.getScheduler().runTaskTimer(Main.getInstance(), new Runnable() {
-//
-//		@Override
-//		public void run() {
-//		    sendTitle(p, this., "", 0.5, 1, 0.5);
-//		}
-//	    }, 20 * i);
-//    }
-//
-//    public static void sendCountDownTitleToEveryone(int n) {
-//	/*
-//	 * 모두에게 n ~ 1까지 delay초마다 카운트 다운
-//	 */
-//	for (Player p : Bukkit.getOnlinePlayers()) {
-//	    sendCountDownTitle(p, n);
-//	}
-//    }
-
-	// Console 전용
-	public static void printConsoleMessage(String msg) {
-		Bukkit.getConsoleSender().sendMessage(msg);
-	}
-
-	public static void info(String msg) {
-		Bukkit.getLogger().info(msg);
-	}
-
-	public static void warn(String msg) {
-		Bukkit.getLogger().warning(msg);
-	}
-
-	public static void debug(String msg) {
-		if (DEBUG) {
-			Bukkit.getConsoleSender().sendMessage("" + ChatColor.BOLD + ChatColor.RED + "[Debug] " + msg);
-		}
-	}
-
-	public static void reportBug(String msg) {
-		Bukkit.getConsoleSender().sendMessage("" + ChatColor.BOLD + ChatColor.RED + "[Bug] " + msg);
 	}
 
 }

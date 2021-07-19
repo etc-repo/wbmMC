@@ -23,7 +23,7 @@ public class YamlManager {
 	 * 
 	 * 2. registerMember()에 등록
 	 * 
-	 * 3. setData()로 넘어가는 FileConfiguration config를 멤버클래스에서 사용
+	 * 3. setData()로 넘어가는 FileConfiguration config를 사용(수정한 값들은 서버가 닫힐 떄 자동으로 저장됨)
 	 * 
 	 */
 	private Map<YamlMember, FileConfiguration> members;
@@ -33,6 +33,27 @@ public class YamlManager {
 //		// 기본 plugins 폴더로 설정
 //		this(Main.getInstance().getDataFolder());
 //	}
+
+	void a() {
+//		File parentFile = new File("parent");
+//		File file = new File(parentFile, "custom.yml");
+//		if (!parentFile.exists()) {
+//			parentFile.mkdir();
+//		}
+//
+//		if (!file.exists()) {
+//			file.createNewFile();
+//		}
+//
+//		FileConfiguration config = YamlConfiguration.loadConfiguration(file);
+//		config.load
+//		config.set("a", 1);
+//		config.set("b", 2);
+//		int numA = (int) config.get("a");
+//		int numB = config.getInt("b");
+//		
+//		config.save(file);
+	}
 
 	public YamlManager(File rootForlder) {
 		this.rootForlder = rootForlder;
@@ -76,7 +97,8 @@ public class YamlManager {
 	}
 
 	public void reload(YamlMember member) {
-		// 리로드되면 참조중인 config파일이 자동으로 업데이트 됨 (굳이 distribute에서 다시 받을 필요 없음)
+		// 리로드되면 참조중인 config파일이 자동으로 업데이트 됨 (굳이 distribute에서 다시 받을 필요 없음(변수에서 사용하는중이면
+		// 받아서 다시 변수에 할당행 함)
 		if (this.members.containsKey(member)) {
 			FileConfiguration memberConfig = this.members.get(member);
 			try {
@@ -90,13 +112,13 @@ public class YamlManager {
 
 	private void makeFile(YamlMember member) {
 		// root 폴더 없으면 만들기
-		if(!this.rootForlder.exists()) {
+		if (!this.rootForlder.exists()) {
 			this.rootForlder.mkdir();
 		}
-		
+
 		String fileName = member.getFileName();
-		
-		// 경로가 /(File.separator)로 구분되어있으면 상위 폴더도 모두다 만들기
+
+		// 경로가 /로 구분되어있으면 상위 폴더도 모두다 만들기
 		List<String> folders = Arrays.asList(fileName.split("/"));
 		File parentFolder = this.rootForlder;
 		for (int i = 0; i < folders.size() - 1; i++) {
@@ -116,6 +138,7 @@ public class YamlManager {
 				e.printStackTrace();
 			}
 		}
+
 	}
 
 	public void unregisterMember(YamlMember member) {

@@ -26,18 +26,18 @@ public class YamlHelper {
 			return null;
 		}
 		if (obj instanceof ConfigurationSection) {
+			// 내부 자식들중 Map형태가 있으면 모두 Map으로 형변환 시킴
 			ConfigurationSection section = (ConfigurationSection) obj;
 			for (String key : section.getKeys(false)) {
 				if (section.isConfigurationSection(key)) {
 					Object childObj = section.getConfigurationSection(key);
-					section.set(key, ObjectToMap(childObj));
+					section.set(key, ObjectToMap(childObj)); // recursive
 				}
 			}
 
 			return section.getValues(true);
 		}
 		return null;
-//		return ((ConfigurationSection) obj).getValues(true);
 	}
 
 }

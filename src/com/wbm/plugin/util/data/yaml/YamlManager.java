@@ -11,8 +11,6 @@ import java.util.Map;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import com.wbm.plugin.Main;
-
 public class YamlManager {
 	/*
 	 * yaml 관리 매니저
@@ -29,30 +27,30 @@ public class YamlManager {
 	private Map<YamlMember, FileConfiguration> members;
 	private final File rootForlder;
 
-//	public YamlManager() {
-//		// 기본 plugins 폴더로 설정
-//		this(Main.getInstance().getDataFolder());
-//	}
+	//	public YamlManager() {
+	//		// 기본 plugins 폴더로 설정
+	//		this(Main.getInstance().getDataFolder());
+	//	}
 
 	void a() {
-//		File parentFile = new File("parent");
-//		File file = new File(parentFile, "custom.yml");
-//		if (!parentFile.exists()) {
-//			parentFile.mkdir();
-//		}
-//
-//		if (!file.exists()) {
-//			file.createNewFile();
-//		}
-//
-//		FileConfiguration config = YamlConfiguration.loadConfiguration(file);
-//		config.load
-//		config.set("a", 1);
-//		config.set("b", 2);
-//		int numA = (int) config.get("a");
-//		int numB = config.getInt("b");
-//		
-//		config.save(file);
+		//		File parentFile = new File("parent");
+		//		File file = new File(parentFile, "custom.yml");
+		//		if (!parentFile.exists()) {
+		//			parentFile.mkdir();
+		//		}
+		//
+		//		if (!file.exists()) {
+		//			file.createNewFile();
+		//		}
+		//
+		//		FileConfiguration config = YamlConfiguration.loadConfiguration(file);
+		//		config.load
+		//		config.set("a", 1);
+		//		config.set("b", 2);
+		//		int numA = (int) config.get("a");
+		//		int numB = config.getInt("b");
+		//		
+		//		config.save(file);
 	}
 
 	public YamlManager(File rootForlder) {
@@ -98,7 +96,8 @@ public class YamlManager {
 
 	public void reload(YamlMember member) {
 		// 리로드되면 참조중인 config파일이 자동으로 업데이트 됨 (굳이 distribute에서 다시 받을 필요 없음(변수에서 사용하는중이면
-		// 받아서 다시 변수에 할당행 함)
+		// 받아서 다시 변수에 할당해야 함)
+		// [주의]: 현재 저장하지 않은 데이터는 파일에 저장되지 않음(버려짐)
 		if (this.members.containsKey(member)) {
 			FileConfiguration memberConfig = this.members.get(member);
 			try {

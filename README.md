@@ -5,7 +5,7 @@
 [다운로드](https://github.com/worldbiomusic/wbmMC/releases)
 
 # 마인크래프트 버전
-- 1.16.4 API를 기반으로 제작됨
+- paper기반의 API를 기반으로 제작됨
 
 # 플러그인에 적용 방법
 1. 플러그인 다운로드
@@ -16,4 +16,3 @@
 6. 플러그인 제작
 7. 버킷의 plugins 폴더에 wbmMC 넣고 실행
 
-❗ bukkit api까지 포함하고 있지 않습니다

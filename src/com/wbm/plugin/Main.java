@@ -206,7 +206,7 @@ class Test implements YamlMember {
 		System.out.println("a: " + config.get("a"));
 	}
 
-	void reload() {
+	public void reload() {
 		yamlM.reload(this);
 	}
 

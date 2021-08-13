@@ -13,4 +13,8 @@ public interface YamlMember {
 
 	// 파일 예시: "A/B/C/D.yml" (구분자: "/")
 	public String getFileName();
+
+	// setData()가 다시 실행됨 (현재 서버 데이터는 저장하지 않는 한 소멸됨)
+	// 상황에 따라서 reload() 후 서버 데이터에 해야 할 작업이 있을 수 도 있음
+	public void reload();
 }

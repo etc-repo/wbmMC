@@ -2,6 +2,7 @@ package com.wbm.plugin.util;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
@@ -15,10 +16,22 @@ public class PlayerTool {
 		return Bukkit.getOnlinePlayers();
 	}
 
+	public static boolean isPlayerOnline(Player p) {
+		return p != null;
+	}
+
+	public static boolean isPlayerOnline(UUID uuid) {
+		return Bukkit.getPlayer(uuid) != null;
+	}
+
+	public static boolean isPlayerOnline(String name) {
+		return Bukkit.getPlayer(name) != null;
+	}
+
 	public static int onlinePlayersCount() {
 		return onlinePlayers().size();
 	}
-	
+
 	public static void makePureState(Player p) {
 		// 1. 체력 회복
 		// 2. 배고픔 회복
@@ -30,7 +43,7 @@ public class PlayerTool {
 	}
 
 	public static void heal(Player p) {
-		p.setHealth(20);
+		p.setHealth(p.getHealthScale());
 		p.setFoodLevel(20);
 	}
 

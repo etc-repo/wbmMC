@@ -1,5 +1,6 @@
 package com.wbm.plugin.util;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
@@ -38,6 +39,7 @@ public class InventoryTool {
 			addItemToPlayers(all, item);
 		}
 	}
+
 	public static void addItemsToPlayers(List<Player> all, List<ItemStack> items) {
 		for (ItemStack item : items) {
 			addItemToPlayers(all, item);
@@ -107,6 +109,38 @@ public class InventoryTool {
 		}
 
 		return null;
+	}
+
+	public static List<Integer> getExistItemSlots(Player p) {
+		ItemStack[] items = p.getInventory().getContents();
+		List<Integer> slots = new ArrayList<>();
+		for (int i = 0; i < items.length; i++) {
+			if (items[i] != null) {
+				slots.add(i);
+			}
+		}
+		return slots;
+	}
+
+	public static int getExistItemRandomSlot(Player p) {
+		List<Integer> slots = getExistItemSlots(p);
+		if (slots.isEmpty()) {
+			return -1;
+		}
+		return slots.get((int) (Math.random() * slots.size()));
+	}
+
+	public static void removeItem(Player p, int slot) {
+		p.getInventory().getItem(slot).setAmount(0);
+	}
+
+	public static boolean removeRandomItem(Player p) {
+		int slot = getExistItemRandomSlot(p);
+		if (slot == -1) {
+			return false;
+		}
+		removeItem(p, slot);
+		return true;
 	}
 }
 

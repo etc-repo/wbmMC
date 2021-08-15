@@ -12,15 +12,11 @@ import com.wbm.plugin.Main;
 public class BukkitTaskManager {
 	/*
 	 * [사용법]
-	 * 
 	 * 1. registerTask() 메소드로 먼저 실행할 구현객체를 등록한다(BukkitRunnable 익명 클래스)
-	 * 
 	 * 2. 그 다음 runTask 관련 메소드로 실행한다
-	 * 
 	 * 3. 종료는 cancelTask관련 메소드로 정지한다
 	 * 
 	 * [주의사항]
-	 * 
 	 * - 등록(registerTask())하고 사용한(runTask~()) task는 재사용이 불가능하므로, 사용할 떄 마다
 	 * 등록(registerTask())을 한다음 사용해야 함
 	 */
@@ -166,4 +162,3 @@ public class BukkitTaskManager {
 //
 //
 //
-

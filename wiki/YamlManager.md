@@ -8,27 +8,27 @@
 ## YamlManager
 - YamlMember 관리 클래스
 - YamlMember를 등록시켜서 사용하는 구조
-- YamlMember클래스 1개당 1개의 파일을 사용해서 저장되는 구조
 
 ## YamlMember
 - 데이터 관리 클래스
-- 데이터를 클래스 내부에서 편하게 관리 가능
+- 데이터를 클래스 내부에서 객체로 편하게 관리 가능
+- YamlMember클래스 1개당 1개의 파일을 사용해서 저장되는 구조
 
 ## YamlHelper
-- 데이터 관련 도움 클래스
-
+- Yaml 관련 도움 클래스
 
 
 
 # 사용법
+- 마인크래프트 플러그인 기준
 ## 1. YamlManager 생성
 ```java
 public class TestMain extends JavaPlugin{
-  YamlManager yamlManager;
+  	YamlManager yamlManager;
 	@Override
 	public void onEnable() {
 		super.onEnable();
-    this.yamlManager = new YamlManager(this.getDataFolder());
+    		this.yamlManager = new YamlManager(this.getDataFolder());
 	}
 }
 ```
@@ -141,11 +141,11 @@ class DataManager implements YamlMember {
 - 등록을 하는 순간에 데이터를 load함
 ```java
 public class TestMain extends JavaPlugin{
-  YamlManager yamlManager;
+  	YamlManager yamlManager;
 	@Override
 	public void onEnable() {
 		super.onEnable();
-    this.yamlManager = new YamlManager(this.getDataFolder());
+   		this.yamlManager = new YamlManager(this.getDataFolder());
 		DataManager dataManager = new DataManager();
 		yamlManager.registerMember(dataManager);
 	}
@@ -156,11 +156,11 @@ public class TestMain extends JavaPlugin{
 - e.g. 마인크래프트 서버 끝나는 `onDisable()`에서 수행
 ```java
 public class TestMain extends JavaPlugin{
-  YamlManager yamlManager;
+	YamlManager yamlManager;
 	@Override
 	public void onEnable() {
 		super.onEnable();
-    this.yamlManager = new YamlManager(this.getDataFolder());
+		this.yamlManager = new YamlManager(this.getDataFolder());
 		DataManager dataManager = new DataManager();
 		yamlManager.registerMember(dataManager);
 	}

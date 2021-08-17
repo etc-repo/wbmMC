@@ -5,4 +5,4 @@
 - [위키](wiki/Home.md)
 
 # 다운로드
-[다운로드](https://github.com/worldbiomusic/wbmMC/releases)
+- [다운로드](https://github.com/worldbiomusic/wbmMC/releases)

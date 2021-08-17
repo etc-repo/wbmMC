@@ -22,7 +22,7 @@
 
 
 # 도구
-- [YamlDataManager](YamlDataManager.md)
+- [YamlManager](YamlManager.md)
 
 
 

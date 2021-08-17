@@ -16,6 +16,11 @@
 
 
 
+
+# 로그
+- [log](log.md)
+
+
 # 도구
 - [YamlDataManager](YamlDataManager.md)
 

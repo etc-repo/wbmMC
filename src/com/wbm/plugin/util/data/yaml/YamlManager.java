@@ -110,7 +110,7 @@ public class YamlManager {
 	}
 
 	public void reloadAllData() {
-		this.getMemberList().forEach(member -> this.reload(member));
+		this.getMemberList().forEach(member -> member.reload());
 	}
 
 	private void makeFile(YamlMember member) {

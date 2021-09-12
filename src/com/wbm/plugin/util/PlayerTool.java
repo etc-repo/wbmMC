@@ -9,7 +9,7 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 
-import com.wbm.plugin.Main;
+import com.wbm.plugin.WbmMC;
 
 public class PlayerTool {
 	public static Collection<? extends Player> onlinePlayers() {
@@ -61,7 +61,7 @@ public class PlayerTool {
 	}
 
 	public static void hidePlayerFromAnotherPlayer(Player hideTarget, Player anotherPlayer) {
-		anotherPlayer.hidePlayer(Main.getInstance(), hideTarget);
+		anotherPlayer.hidePlayer(WbmMC.getInstance(), hideTarget);
 	}
 
 	public static void hidePlayerFromOtherPlayers(Player hideTarget, List<Player> others) {
@@ -77,7 +77,7 @@ public class PlayerTool {
 	}
 
 	public static void unhidePlayerFromAnotherPlayer(Player unhideTarget, Player anotherPlayer) {
-		anotherPlayer.showPlayer(Main.getInstance(), unhideTarget);
+		anotherPlayer.showPlayer(WbmMC.getInstance(), unhideTarget);
 	}
 
 	public static void unhidePlayerFromOtherPlayers(Player unhideTarget, List<Player> others) {

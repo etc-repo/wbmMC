@@ -16,11 +16,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.wbm.plugin.util.data.yaml.YamlManager;
 import com.wbm.plugin.util.data.yaml.YamlMember;
 
-public class Main extends JavaPlugin {
-	private static Main instance;
+public class WbmMC extends JavaPlugin {
+	private static WbmMC instance;
 	YamlManager yamlM;
 
-	public static Main getInstance() {
+	public static WbmMC getInstance() {
 		return instance;
 	}
 

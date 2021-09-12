@@ -1,4 +1,4 @@
-package com.wbm.plugin.util;
+package com.wbm.plugin.util.instance;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,7 +7,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
-import com.wbm.plugin.Main;
+import com.wbm.plugin.WbmMC;
 
 public class BukkitTaskManager {
 	/*
@@ -72,7 +72,7 @@ public class BukkitTaskManager {
 
 	// runTask
 	public void runTask(String name) {
-		this.runTask(name, Main.getInstance());
+		this.runTask(name, WbmMC.getInstance());
 	}
 
 	public void runTask(String name, Plugin plugin) {
@@ -93,7 +93,7 @@ public class BukkitTaskManager {
 
 	// runTaskLater
 	public void runTaskLater(String name, long delay) {
-		this.runTaskLater(name, Main.getInstance(), delay);
+		this.runTaskLater(name, WbmMC.getInstance(), delay);
 	}
 
 	public void runTaskLater(String name, Plugin plugin, long delay) {
@@ -114,7 +114,7 @@ public class BukkitTaskManager {
 
 	// runTaskTimer
 	public void runTaskTimer(String name, long delay, long period) {
-		this.runTaskTimer(name, Main.getInstance(), delay, period);
+		this.runTaskTimer(name, WbmMC.getInstance(), delay, period);
 	}
 
 	public void runTaskTimer(String name, Plugin plugin, long delay, long period) {

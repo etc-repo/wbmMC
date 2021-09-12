@@ -92,4 +92,20 @@ public class LocationTool {
 			}
 		}
 	}
+
+	public static Location randomTp(Location loc1, Location loc2) {
+		// loc1과 loc2 위치중에(in) 랜덤 random tp
+		int randomX = MathTool.getInRandom(loc1.getBlockX(), loc2.getBlockX());
+		int randomY = MathTool.getInRandom(loc1.getBlockY(), loc2.getBlockY());
+		int randomZ = MathTool.getInRandom(loc1.getBlockZ(), loc2.getBlockZ());
+		return new Location(loc1.getWorld(), randomX, randomY, randomZ);
+	}
+
+	public static Location randomTpOnGround(Location loc1, Location loc2) {
+		int randomX = MathTool.getInRandom(loc1.getBlockX(), loc2.getBlockX());
+		int randomZ = MathTool.getInRandom(loc1.getBlockZ(), loc2.getBlockZ());
+		World world = loc1.getWorld();
+		int y = world.getHighestBlockYAt(randomX, randomZ);
+		return new Location(world, randomX, y, randomZ);
+	}
 }

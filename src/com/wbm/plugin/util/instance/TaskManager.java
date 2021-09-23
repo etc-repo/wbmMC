@@ -3,38 +3,37 @@ package com.wbm.plugin.util.instance;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
 import com.wbm.plugin.WbmMC;
 
-public class BukkitTaskManager {
+public class TaskManager {
 	/*
-	 * [사용법]
-	 * 1. registerTask() 메소드로 먼저 실행할 구현객체를 등록한다(BukkitRunnable 익명 클래스)
-	 * 2. 그 다음 runTask 관련 메소드로 실행한다
-	 * 3. 종료는 cancelTask관련 메소드로 정지한다
-	 * 
-	 * [주의사항]
-	 * - 등록(registerTask())하고 사용한(runTask~()) task는 재사용이 불가능하므로, 사용할 떄 마다
-	 * 등록(registerTask())을 한다음 사용해야 함
+	 * [Usage]
+	 * 1. register anonymous class of "Runnable"
+	 * 2. run or cancel task with name
 	 */
 
-	// 실행될 task 내용물
-	private Map<String, BukkitRunnable> runnableList;
+	// runnable list
+	private Map<String, Runnable> runnableList;
 
-	// 실제 실행된 task
+	// running task
 	private Map<String, BukkitTask> taskList;
 
-	public BukkitTaskManager() {
+	public TaskManager() {
 		this.runnableList = new HashMap<>();
 		this.taskList = new HashMap<>();
 	}
 
-	public void registerTask(String name, BukkitRunnable runnable) {
-		// register task with name
-		this.runnableList.put(name, runnable);
+	public void registerTask(String name, Runnable runnable) {
+		// except for BukkitRunnable (BukkitRunnable instance can't run after used)
+		if (!(runnable instanceof BukkitRunnable)) {
+			// register task with name
+			this.runnableList.put(name, runnable);
+		}
 	}
 
 	public void cancelTask(String name) {
@@ -57,7 +56,7 @@ public class BukkitTaskManager {
 		return false;
 	}
 
-	// BukkitRunnable가져와서 사용하면 버그 날 가능성이 많으므로 제공 x
+	// prevent bugs of using BukkitRunnable
 //	public BukkitRunnable getBukkitRunnable(String name) {
 //		return this.runnableList.get(name);
 //	}
@@ -77,17 +76,17 @@ public class BukkitTaskManager {
 
 	public void runTask(String name, Plugin plugin) {
 		if (this.existRunnable(name)) {
-			BukkitTask task = this.runnableList.get(name).runTask(plugin);
+			Runnable r = this.runnableList.get(name);
+			BukkitTask task = Bukkit.getScheduler().runTask(WbmMC.getInstance(), r);
 			this.taskList.put(name, task);
-			this.removeRunnable(name);
 		}
 	}
 
 	public void runTaskAsynchronously(String name, Plugin plugin) {
 		if (this.existRunnable(name)) {
-			BukkitTask task = this.runnableList.get(name).runTaskAsynchronously(plugin);
+			Runnable r = this.runnableList.get(name);
+			BukkitTask task = Bukkit.getScheduler().runTaskAsynchronously(WbmMC.getInstance(), r);
 			this.taskList.put(name, task);
-			this.removeRunnable(name);
 		}
 	}
 
@@ -98,17 +97,17 @@ public class BukkitTaskManager {
 
 	public void runTaskLater(String name, Plugin plugin, long delay) {
 		if (this.existRunnable(name)) {
-			BukkitTask task = this.runnableList.get(name).runTaskLater(plugin, delay);
+			Runnable r = this.runnableList.get(name);
+			BukkitTask task = Bukkit.getScheduler().runTaskLater(WbmMC.getInstance(), r, delay);
 			this.taskList.put(name, task);
-			this.removeRunnable(name);
 		}
 	}
 
 	public void runTaskLaterAsynchronously(String name, Plugin plugin, long delay) {
 		if (this.existRunnable(name)) {
-			BukkitTask task = this.runnableList.get(name).runTaskLaterAsynchronously(plugin, delay);
+			Runnable r = this.runnableList.get(name);
+			BukkitTask task = Bukkit.getScheduler().runTaskLaterAsynchronously(WbmMC.getInstance(), r, delay);
 			this.taskList.put(name, task);
-			this.removeRunnable(name);
 		}
 	}
 
@@ -119,17 +118,17 @@ public class BukkitTaskManager {
 
 	public void runTaskTimer(String name, Plugin plugin, long delay, long period) {
 		if (this.existRunnable(name)) {
-			BukkitTask task = this.runnableList.get(name).runTaskTimer(plugin, delay, period);
+			Runnable r = this.runnableList.get(name);
+			BukkitTask task = Bukkit.getScheduler().runTaskTimer(WbmMC.getInstance(), r, delay, period);
 			this.taskList.put(name, task);
-			this.removeRunnable(name);
 		}
 	}
 
 	public void runTaskTimerAsynchronously​(String name, Plugin plugin, long delay, long period) {
 		if (this.existRunnable(name)) {
-			BukkitTask task = this.runnableList.get(name).runTaskTimerAsynchronously(plugin, delay, period);
+			Runnable r = this.runnableList.get(name);
+			BukkitTask task = Bukkit.getScheduler().runTaskTimerAsynchronously(WbmMC.getInstance(), r, delay, period);
 			this.taskList.put(name, task);
-			this.removeRunnable(name);
 		}
 	}
 

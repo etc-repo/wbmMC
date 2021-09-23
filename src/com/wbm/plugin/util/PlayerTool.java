@@ -1,12 +1,18 @@
 package com.wbm.plugin.util;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.potion.PotionEffect;
 
 import com.wbm.plugin.WbmMC;
@@ -108,4 +114,69 @@ public class PlayerTool {
 		}
 	}
 
+	public static boolean isHidden(Player target) {
+		for (Player other : Bukkit.getOnlinePlayers()) {
+			if (!(other.equals(target)) && other.canSee(target)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public static List<Player> getPlayersCannotSeeTarget(Player target) {
+		// return who can't see target player
+		List<Player> canNotSeePlayers = new ArrayList<>();
+		for (Player other : Bukkit.getOnlinePlayers()) {
+			if (!(other.equals(target)) && !(other.canSee(target))) {
+				canNotSeePlayers.add(other);
+			}
+		}
+
+		return canNotSeePlayers;
+	}
+	
+	@SuppressWarnings("deprecation")
+	public static ItemStack getPlayerHead(Player p) {
+		boolean isNewVersion = Arrays.stream(Material.values()).map(Material::name).collect(Collectors.toList())
+				.contains("PLAYER_HEAD");
+		Material type = Material.matchMaterial(isNewVersion ? "PLAYER_HEAD" : "SKULL_ITEM");
+		ItemStack item = new ItemStack(type, 1);
+
+		if (!isNewVersion) {
+			item.setDurability((short) 3);
+		}
+		SkullMeta meta = (SkullMeta) item.getItemMeta();
+		meta.setOwningPlayer(p);
+
+		item.setItemMeta(meta);
+
+		return item;
+
+	}
 }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//

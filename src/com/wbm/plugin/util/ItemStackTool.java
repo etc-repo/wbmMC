@@ -1,6 +1,7 @@
 package com.wbm.plugin.util;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.Material;
@@ -16,7 +17,19 @@ public class ItemStackTool {
 		return new ItemStack(mat);
 	}
 
+	public static ItemStack item(Material mat, String displayName) {
+		ItemStack item = new ItemStack(mat);
+
+		item = setItemMeta(item, displayName);
+
+		return item;
+	}
+
 	public static ItemStack item(Material mat, String displayName, String... lore) {
+		return item(mat, displayName, Arrays.asList(lore));
+	}
+
+	public static ItemStack item(Material mat, String displayName, List<String> lore) {
 		ItemStack item = new ItemStack(mat);
 
 		item = setItemMeta(item, displayName, lore);
@@ -29,7 +42,11 @@ public class ItemStackTool {
 		return item;
 	}
 
-	private static ItemStack setItemMeta(ItemStack item, String displayName, String... lore) {
+	private static ItemStack setItemMeta(ItemStack item, String displayName) {
+		return setItemMeta(item, displayName, new ArrayList<>());
+	}
+
+	private static ItemStack setItemMeta(ItemStack item, String displayName, List<String> lore) {
 		ItemMeta meta = item.getItemMeta();
 		meta.setDisplayName(displayName);
 		List<String> lores = new ArrayList<>();

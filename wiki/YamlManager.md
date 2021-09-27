@@ -1,6 +1,6 @@
 # 설명
 - 데이터 관리를 도와주는 도구
-- `Serial`, `json` 방식의 도구도 존재함 (마인크래프트에서는 `yaml`이 주로 쓰이고, serial관련 작업이 간편함)
+- `Serial`, `json` 방식의 도구도 존재함 (마인크래프트에서는 `yaml`이 주로 쓰이고)
 
 
 
@@ -12,7 +12,7 @@
 ## YamlMember
 - 데이터 관리 클래스
 - 데이터를 클래스 내부에서 객체로 편하게 관리 가능
-- YamlMember클래스 1개당 1개의 파일을 사용해서 저장되는 구조
+- YamlMember객체 1개당 1개의 파일을 사용해서 저장되는 구조
 
 ## YamlHelper
 - Yaml 관련 도움 클래스
@@ -184,6 +184,16 @@ public class TestMain extends JavaPlugin{
 - `reloadAllData()`: 모든 member의 데이터 리로드
 
 
+
+# 주의사항
+- 데이터 저장은 YamlMember의 `setData()`에서 넘기는 `FileConfiguration config`을 그대로 저장하는 구조 (객체에서 config를 직접 다뤄서 데이터 관리해도 됨)
+## 객체 저장할 때
+```java
+// config의 data 섹션에 this.data 동기화
+config.set("data", this.data);
+```
+- 저장한 `this.data` 객체는 `put`을 해도 넣은 데이터가 그대로 저장됨
+- 하지만, this.data자체를 다른 변수로 할당 시킨다면(e.g. `this.data = new Hash<>();`) 더이상 this.data와 동기화 되지 않음을 주의해야 함 (MiniGameWorld플러그인의 `MiniGameData`참고
 
 
 # 예시

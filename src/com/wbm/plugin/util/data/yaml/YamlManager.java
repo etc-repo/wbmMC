@@ -168,6 +168,12 @@ public class YamlManager {
 	public void save(YamlMember member) {
 		// 파일 저장
 		FileConfiguration config = this.members.get(member);
+
+//		System.out.println(member.getFileName());
+//		if (member.getFileName().equals("minigames/FitTool.yml")) {
+//			System.out.println("TItle; " + config.getConfigurationSection("FitTool").get("title"));
+//		}
+
 		File memberFile = this.getMemberFile(member);
 		try {
 			config.save(memberFile);

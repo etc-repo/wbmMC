@@ -134,7 +134,7 @@ public class PlayerTool {
 
 		return canNotSeePlayers;
 	}
-	
+
 	@SuppressWarnings("deprecation")
 	public static ItemStack getPlayerHead(Player p) {
 		boolean isNewVersion = Arrays.stream(Material.values()).map(Material::name).collect(Collectors.toList())
@@ -153,6 +153,21 @@ public class PlayerTool {
 		return item;
 
 	}
+
+	public static String getPlayersNameString(List<Player> players, String delimiter) {
+		String members = "";
+
+		Player lastPlayer = players.get(players.size() - 1);
+		for (Player p : players) {
+			members += p.getName();
+			if (!lastPlayer.equals(p)) {
+				members += delimiter + " ";
+			}
+		}
+		return members;
+
+	}
+	
 }
 
 //

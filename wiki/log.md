@@ -1,9 +1,13 @@
-# 설명
-- 기록 파일
-
-# 할 것
-- 모든 클래스 리팩토링 필요
-- `TickTool` 추가 작업
+# TODO
+- Refactor all classes
+- Improve `TickTool` 
 
 
-# 한 것
+--- 
+
+# 2021-09-23
+- TaskManager: Make can reuse runnable instance (Exception for `BukkitRunnable` that can not be reusable)
+
+# 2021-10-07
+- Add BackupDataManager 
+- Improve somethings

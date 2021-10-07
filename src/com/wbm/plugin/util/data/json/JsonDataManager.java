@@ -66,7 +66,7 @@ public class JsonDataManager {
 	void testLongOrDouble() {
 		String json = "[{\"id\":1,\"quantity\":2.3,\"name\":\"apple\"}, {\"id\":3,\"quantity\":4.7,\"name\":\"orange\"}]";
 		List<Map<String, Object>> l = gson.fromJson(json, new TypeToken<List<Map<String, Object>>>() {
-		}.getType());
+		}.getType()); 
 
 		for (Map<String, Object> item : l)
 			System.out.println(item);
@@ -74,7 +74,6 @@ public class JsonDataManager {
 		String serialized = gson.toJson(l);
 		System.out.println(serialized);
 	}
-
 
 	public Gson getGson() {
 		// Minecraft에서 Gson을 사용할 때(데이터 로드 or 데이터 저장) JsonDataManager class에서 Gson객체로 꼭

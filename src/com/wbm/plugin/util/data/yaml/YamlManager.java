@@ -79,6 +79,8 @@ public class YamlManager {
 			this.loadConfig(member);
 			// 멤버에게 분배
 			this.distributeData(member);
+			// save config
+			this.save(member);
 			return true;
 		}
 	}

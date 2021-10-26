@@ -13,6 +13,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.wbm.plugin.util.Utils;
 import com.wbm.plugin.util.data.yaml.YamlManager;
 import com.wbm.plugin.util.data.yaml.YamlMember;
 
@@ -27,7 +28,7 @@ public class WbmMC extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		instance = this;
-		getLogger().info(ChatColor.GREEN + "wbmMC ON");
+		Utils.info(ChatColor.GREEN + "wbmMC ON");
 
 //		this.config();
 //		this.customConfig();
@@ -38,21 +39,21 @@ public class WbmMC extends JavaPlugin {
 
 	}
 
-	private void yamlM() {
-		this.yamlM = new YamlManager(this.getDataFolder());
-
-		Test t = new Test();
-		this.yamlM.registerMember(t);
-		t.writeData();
-		t.printData();
-
-		t.updateData();
-		this.yamlM.saveAllData();
-		t.reload();
-		t.printData();
-
-		this.yamlM.saveAllData();
-	}
+//	private void yamlM() {
+//		this.yamlM = new YamlManager(this.getDataFolder());
+//
+//		Test t = new Test();
+//		this.yamlM.registerMember(t);
+//		t.writeData();
+//		t.printData();
+//
+//		t.updateData();
+//		this.yamlM.saveAllData();
+//		t.reload();
+//		t.printData();
+//
+//		this.yamlM.saveAllData();
+//	}
 
 	@SuppressWarnings("unchecked")
 	void config() {
@@ -185,7 +186,7 @@ public class WbmMC extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
-		getLogger().info(ChatColor.RED + "wbmMC OFF");
+		Utils.info(ChatColor.RED + "wbmMC OFF");
 	}
 
 }

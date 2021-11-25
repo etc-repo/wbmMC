@@ -19,7 +19,7 @@ public class BackupDataManager {
 	public void saveBackupData() {
 		// Ref:
 		// https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html
-		String nowTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd+H;mm;ss"));
+		String nowTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'H;mm;ss"));
 
 		File originFile = this.javaPlugin.getDataFolder();
 		String backupDataFolderString = this.javaPlugin.getDataFolder().getName() + "_backup";

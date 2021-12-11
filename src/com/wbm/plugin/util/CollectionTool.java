@@ -10,7 +10,9 @@ public class CollectionTool {
 	/**
 	 * Removes not necessary keys in overKeyTarget from minKeyTarget <br>
 	 * <br>
-	 * [IMPORTANT] Must be called before {@link #restoreMissedKeys(Map, Map)}<br>
+	 * [IMPORTANT] Must be called before {@link #restoreMissedKeys(Map, Map)} if you
+	 * use {@link #restoreMissedKeys(Map, Map)}<br>
+	 * [IMPORTANT] Must use with Map<String, Object><br>
 	 * 
 	 * @param overKeyTarget Target which has to be removed necessary keys
 	 * @param minKeyTarget  Target which has minimun keys for necessary
@@ -42,8 +44,9 @@ public class CollectionTool {
 	/**
 	 * Restores missed keys in missedKeyTarget from fullKeyTarget<br>
 	 * <br>
-	 * [IMPORTANT] Must be called after
-	 * {@link #removeNotNecessaryKeys(Map, Map)}<br>
+	 * [IMPORTANT] Must be called after {@link #removeNotNecessaryKeys(Map, Map)} if
+	 * you use {@link #removeNotNecessaryKeys(Map, Map)}<br>
+	 * [IMPORTANT] Must use with Map<String, Object><br>
 	 * 
 	 * @param missedKeyTarget Target which needs to restore missed keys
 	 * @param fullKeyTarget   Target which has full keys
@@ -73,7 +76,8 @@ public class CollectionTool {
 	 * <br>
 	 * Don't have to sync to inner Map, because outer map already has them<br>
 	 * <br>
-	 * [IMPORTANT] Must be called every time, cause for some updates
+	 * [IMPORTANT] Must be called every time, cause for some updates<br>
+	 * [IMPORTANT] Must use with Map<String, Object><br>
 	 * 
 	 * @param unorderedMap Map which has unordered keys
 	 * @param orderedMap   Map which has ordered keys

@@ -27,13 +27,13 @@ public class BackupDataManager {
 		if (!backupDataFolder.exists()) {
 			backupDataFolder.mkdir();
 		}
-		
+
 		File backupFile = new File(backupDataFolder, nowTime);
 
 		try {
 			// copy files with directory structure
 			FileUtils.copyDirectoryStructure(originFile, backupFile);
-			
+
 			// copy files without directory structure
 //			FileUtils.copyDirectory(originFile, backupFile);
 		} catch (IOException e) {
@@ -41,13 +41,13 @@ public class BackupDataManager {
 		}
 	}
 
-	public void startSavingBackupDataTask(int delay) {
+	public void startSavingBackupDataTask(int delayMin) {
 		new BukkitRunnable() {
 			@Override
 			public void run() {
 				saveBackupData();
 			}
-		}.runTaskTimer(javaPlugin, delay, delay);
+		}.runTaskTimer(javaPlugin, 20 * 60 * delayMin, 20 * 60 * delayMin);
 	}
 
 	public JavaPlugin getJavaPlugin() {

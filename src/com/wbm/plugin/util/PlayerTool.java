@@ -22,20 +22,32 @@ public class PlayerTool {
 		return Bukkit.getOnlinePlayers();
 	}
 
-	public static boolean isPlayerOnline(Player p) {
+	public static boolean isOnlinePlayer(Player p) {
 		return p != null;
 	}
 
-	public static boolean isPlayerOnline(UUID uuid) {
+	public static boolean isOnlinePlayer(UUID uuid) {
 		return Bukkit.getPlayer(uuid) != null;
 	}
 
-	public static boolean isPlayerOnline(String name) {
+	public static boolean isOnlinePlayer(String name) {
 		return Bukkit.getPlayer(name) != null;
 	}
 
 	public static int onlinePlayersCount() {
 		return onlinePlayers().size();
+	}
+
+	public static boolean isOfflinePlayer(Player p) {
+		return isOfflinePlayer(p.getUniqueId());
+	}
+
+	public static boolean isOfflinePlayer(UUID uuid) {
+		return !Bukkit.getOfflinePlayer(uuid).isOnline();
+	}
+
+	public static int offlinePlayersCount() {
+		return Bukkit.getOfflinePlayers().length;
 	}
 
 	public static void makePureState(Player p) {
@@ -167,7 +179,7 @@ public class PlayerTool {
 		return members;
 
 	}
-	
+
 }
 
 //

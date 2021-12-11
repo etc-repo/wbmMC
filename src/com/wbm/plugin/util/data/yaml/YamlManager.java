@@ -123,8 +123,8 @@ public class YamlManager {
 
 		String fileName = member.getFileName();
 
-		// 경로가 /로 구분되어있으면 상위 폴더도 모두다 만들기
-		List<String> folders = Arrays.asList(fileName.split("/"));
+		// 경로가 File.separator 로 구분되어있으면 상위 폴더도 모두다 만들기
+		List<String> folders = Arrays.asList(fileName.split("\\" + File.separator));
 		File parentFolder = this.rootForlder;
 		for (int i = 0; i < folders.size() - 1; i++) {
 			File folder = new File(parentFolder, folders.get(i));

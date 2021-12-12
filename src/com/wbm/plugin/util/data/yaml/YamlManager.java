@@ -99,7 +99,7 @@ public class YamlManager {
 	public void reload(YamlMember member) {
 		// 리로드되면 참조중인 config파일이 자동으로 업데이트 됨 (굳이 distribute에서 다시 받을 필요 없음(변수에서 사용하는중이면
 		// 받아서 다시 변수에 할당해야 함)
-		// [주의]: 현재 데이터는 파일에 저장되지 않음(버려짐)
+		// [주의]: 현재 서버에서 저장하기전의 데이터(메모리에 있는 데이터)는 파일에 저장되지 않고 버려짐
 		if (this.members.containsKey(member)) {
 			FileConfiguration memberConfig = this.members.get(member);
 			try {
@@ -112,7 +112,8 @@ public class YamlManager {
 	}
 
 	public void reloadAllData() {
-		this.getMemberList().forEach(member -> member.reload());
+//		this.getMemberList().forEach(member -> member.reload());
+		this.getMemberList().forEach(m -> reload(m));
 	}
 
 	private void makeFile(YamlMember member) {

@@ -20,9 +20,9 @@
 - Change api-version to 1.13
 - Release `0.3.3`
 
-
-
-
+# 2021-12-12
+- Remove `reload()` of YamlMember
+- Release 0.3.4
 
 
 

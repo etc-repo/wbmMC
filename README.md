@@ -1,8 +1,11 @@
-# 설명
-- 마인크래프트 플러그인을 만들 떄 여러가지 기능으로 도와주는 라이브러리
+# Description
+- Minecraft short tool library
 
-# 위키
-- [위키](wiki/Home.md)
+# WIKI
+- [WIKI](wiki/Home.md)
 
-# 다운로드
-- [다운로드](https://github.com/worldbiomusic/wbmMC/releases)
+# Download
+- [Download](https://github.com/worldbiomusic/wbmMC/releases)
+
+# Warnings
+- This library uses source code of [plexus-utils](https://github.com/codehaus-plexus/plexus-utils) of codehaus-plexus licensed by Apache License, Version 2.0

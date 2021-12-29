@@ -1,4 +1,4 @@
-package com.wbm.plugin.util;
+package com.wbm.plugin.util.instance;
 
 public class Counter
 {

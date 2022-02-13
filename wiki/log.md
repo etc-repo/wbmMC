@@ -24,8 +24,11 @@
 - Remove `reload()` of YamlMember
 - Release 0.3.4
 
-
-
+# 2022-02-13
+- Fix PlayerTool.heal() error
+- Fix PlayerTool.makePureState()
+- Fix LocationTool
+- Release 0.3.5
 
 
 

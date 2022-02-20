@@ -215,4 +215,43 @@ public class BlockTool {
 
 		return false;
 	}
+
+	public static void replaceBlocks(Location pos1, Location pos2, Material oldBlock, Material newBlock) {
+		World world = pos1.getWorld();
+		int pos1X = (int) pos1.getX();
+		int pos2X = (int) pos2.getX();
+		int pos1Y = (int) pos1.getY();
+		int pos2Y = (int) pos2.getY();
+		int pos1Z = (int) pos1.getZ();
+		int pos2Z = (int) pos2.getZ();
+
+		// get difference
+		int dx = MathTool.getDiff(pos1X, pos2X);
+		int dy = MathTool.getDiff(pos1Y, pos2Y);
+		int dz = MathTool.getDiff(pos1Z, pos2Z);
+
+		// get smaller x, y, z
+		int smallX = Math.min(pos1X, pos2X);
+		int smallY = Math.min(pos1Y, pos2Y);
+		int smallZ = Math.min(pos1Z, pos2Z);
+
+		/*
+		 * for문에서 <=dx인 이유: 만약 (1,1) ~ (3,3) 면적의 블럭을 지정하면 총 9개의 블럭을 가리키는것인데 위에서 dx, dy,
+		 * dz를 구할때 차이를 구하므로 3-1 = 2 즉 2칸만을 의미하게 되서 <=을 해줘서 3칸을 채우게 함
+		 */
+		for (int y = 0; y <= dy; y++) {
+			for (int z = 0; z <= dz; z++) {
+				for (int x = 0; x <= dx; x++) {
+					Location loc = new Location(world, smallX, smallY, smallZ);
+					loc.add(x, y, z);
+
+					// set type
+					Material blockMat = loc.getBlock().getType();
+					if (blockMat == oldBlock) {
+						loc.getBlock().setType(newBlock);
+					}
+				}
+			}
+		}
+	}
 }

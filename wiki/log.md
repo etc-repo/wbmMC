@@ -28,10 +28,11 @@
 - Fix PlayerTool.heal() error
 - Fix PlayerTool.makePureState()
 - Fix LocationTool
-- Release 0.3.5
+- Release `0.3.5`
 
-
-
+# 2022-02-20
+- Add `replaceBlocks()`
+- Release `0.3.6`
 
 
 

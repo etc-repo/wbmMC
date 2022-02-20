@@ -13,6 +13,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.wbm.plugin.util.Metrics;
 import com.wbm.plugin.util.Utils;
 import com.wbm.plugin.util.data.yaml.YamlManager;
 import com.wbm.plugin.util.data.yaml.YamlMember;
@@ -29,6 +30,9 @@ public class WbmMC extends JavaPlugin {
 	public void onEnable() {
 		instance = this;
 		Utils.info(ChatColor.GREEN + "wbmMC ON");
+
+		// bstats
+		new Metrics(this, 14416);
 
 //		this.config();
 //		this.customConfig();

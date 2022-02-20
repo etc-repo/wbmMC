@@ -32,6 +32,7 @@
 
 # 2022-02-20
 - Add `replaceBlocks()`
+- Apply BStats
 - Release `0.3.6`
 
 

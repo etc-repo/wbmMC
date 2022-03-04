@@ -13,6 +13,7 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.permissions.PermissionAttachment;
 import org.bukkit.potion.PotionEffect;
 
 import com.wbm.plugin.WbmMC;
@@ -178,6 +179,11 @@ public class PlayerTool {
 		}
 		return members;
 
+	}
+
+	public static void setPermission(Player p, String permission, boolean active) {
+		PermissionAttachment attachment = p.addAttachment(WbmMC.getInstance());
+		attachment.setPermission(permission, active);
 	}
 
 }

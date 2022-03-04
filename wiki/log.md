@@ -35,9 +35,13 @@
 - Apply BStats
 - Release `0.3.6`
 
+# 2022-02-23
+- Apply maven
+- Change jdk to 16 from 8
 
-
-
+# 2022-03-04
+- Add some methods
+- Release `0.3.7`
 
 
 

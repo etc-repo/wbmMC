@@ -1,6 +1,6 @@
 name: wbmMC
 main: com.wbm.plugin.WbmMC
-version: 0.3.7
+version: ${project.version}
 author: worldbiomusic
 description: discord(worldbiomusic#7075), email(worldbiomusic@gmail.com)
 api-version: 1.13

@@ -14,6 +14,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.wbm.plugin.util.Metrics;
+import com.wbm.plugin.util.UpdateChecker;
 import com.wbm.plugin.util.Utils;
 import com.wbm.plugin.util.data.yaml.YamlManager;
 import com.wbm.plugin.util.data.yaml.YamlMember;
@@ -29,7 +30,6 @@ public class WbmMC extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		instance = this;
-		Utils.info(ChatColor.GREEN + "wbmMC ON");
 
 		// bstats
 		new Metrics(this, 14416);
@@ -40,7 +40,36 @@ public class WbmMC extends JavaPlugin {
 //		this.yamlM();
 
 //		this.customConfig2();
+		Utils.info(ChatColor.GREEN + "=============================================");
+		Utils.info(ChatColor.RESET + "                    WbmMC                ");
+		Utils.info(ChatColor.GREEN + "=============================================");
 
+		checkVersion();
+	}
+
+	public static boolean checkVersion() {
+		String latestReleaseTag = UpdateChecker.getGithubLatestReleaseVersion(314590619);
+		boolean isLatest = false;
+
+		String currentVersion = WbmMC.getInstance().getDescription().getVersion();
+		isLatest = currentVersion.equals(latestReleaseTag);
+
+		ChatColor currentVersionColor = isLatest ? ChatColor.GREEN : ChatColor.RED;
+		ChatColor latestVersionColor = ChatColor.GREEN;
+
+		// print update checkers
+		Utils.info("                Update Checker                ");
+		Utils.info(" - Current version: " + currentVersionColor + currentVersion);
+		Utils.info(" - Latest  version: " + latestVersionColor + latestReleaseTag);
+
+		if (!isLatest) {
+			Utils.warning("");
+			Utils.warning("Your version is " + currentVersionColor + "outdated");
+			Utils.warning("Download latest version: " + "https://github.com/worldbiomusic/wbmMC/releases");
+		}
+		Utils.info(ChatColor.GREEN + "=============================================");
+
+		return isLatest;
 	}
 
 //	private void yamlM() {

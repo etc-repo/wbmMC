@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>wbmMC</groupId>
 	<artifactId>wbmMC</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.3.7</version>
 
 	<repositories>
 		<!-- This adds the Spigot Maven repository to the build -->
@@ -37,6 +37,7 @@
 				<excludes>
 					<exclude>**/*.java</exclude>
 				</excludes>
+				<filtering>true</filtering>
 			</resource>
 		</resources>
 		<plugins>
@@ -46,6 +47,23 @@
 				<configuration>
 					<release>16</release>
 				</configuration>
+			</plugin>
+			<!-- shade plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.2.0</version>
+				<configuration>
+					<!-- put your configurations here -->
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

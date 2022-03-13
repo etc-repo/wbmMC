@@ -43,7 +43,10 @@
 - Add some methods
 - Release `0.3.7`
 
-
+# 2022-03-13
+- Add `github-api` to pom.xml (need to build with `mvn package` command)
+- Add UpdateChecker
+- Check version from now on (with github release tag)
 
 
 

@@ -44,9 +44,13 @@
 - Release `0.3.7`
 
 # 2022-03-13
-- Add `github-api` to pom.xml (need to build with `mvn package` command)
+- Add `github-api` to pom.xml 
+- Change build method to maven (need to build with `mvn package` command)
 - Add UpdateChecker
 - Check version from now on (with github release tag)
 
-
+# 2022-03-18
+- Add ServerTool
+- Encode with UTF-8 (maven)
+- Release `0.3.8`
 

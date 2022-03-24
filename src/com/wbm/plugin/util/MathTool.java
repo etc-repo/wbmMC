@@ -49,7 +49,7 @@ public class MathTool {
 
 	public static int getInRandom(int a, int b) {
 		int diff = getDiff(a, b);
-		int randomDiff = (int) (Math.random() * diff);
+		int randomDiff = (int) (Math.random() * (diff + 1));
 		int min = Math.min(a, b);
 		return min + randomDiff;
 	}

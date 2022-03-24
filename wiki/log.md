@@ -54,3 +54,24 @@
 - Encode with UTF-8 (maven)
 - Release `0.3.8`
 
+# 2022-03-24
+- Fix `MathTool.getRandonIn()`
+- Release `0.3.9`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

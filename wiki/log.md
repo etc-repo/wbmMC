@@ -56,6 +56,8 @@
 
 # 2022-03-24
 - Fix `MathTool.getRandonIn()`
+- Add `settings.yml` config file
+- Add `check-update` option
 - Release `0.3.9`
 
 

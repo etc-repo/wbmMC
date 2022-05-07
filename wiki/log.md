@@ -61,6 +61,11 @@
 - Release `0.3.9`
 
 
+# 2022-05-07
+- Improve BackupDataManager
+- Add `ParticleTool`
+- Add `FileTool`
+- Release `0.3.10`
 
 
 

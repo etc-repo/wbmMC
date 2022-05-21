@@ -142,6 +142,14 @@ public class InventoryTool {
 		removeItem(p, slot);
 		return true;
 	}
+
+	public static boolean isFull(Player p) {
+		return isFull(p.getInventory());
+	}
+
+	public static boolean isFull(Inventory inv) {
+		return inv.firstEmpty() == -1;
+	}
 }
 
 //

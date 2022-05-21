@@ -9,8 +9,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.codehaus.plexus.util.FileUtils;
 
-import com.wbm.plugin.util.Utils;
-
 /**
  * Backup directory: "plugin/plugin_backup"<br>
  * Backup data directory: "plugin/plugin_backup/data1"<br>

@@ -108,4 +108,55 @@ public class LocationTool {
 		int y = world.getHighestBlockYAt(randomX, randomZ);
 		return new Location(world, randomX, y, randomZ);
 	}
+
+	public static Location minOfArea(Location pos1, Location pos2) {
+		World world = pos1.getWorld();
+		int pos1X = (int) pos1.getX();
+		int pos2X = (int) pos2.getX();
+		int pos1Y = (int) pos1.getY();
+		int pos2Y = (int) pos2.getY();
+		int pos1Z = (int) pos1.getZ();
+		int pos2Z = (int) pos2.getZ();
+
+		// get smaller x, y, z
+		int smallX = Math.min(pos1X, pos2X);
+		int smallY = Math.min(pos1Y, pos2Y);
+		int smallZ = Math.min(pos1Z, pos2Z);
+
+		return new Location(world, smallX, smallY, smallZ);
+	}
+
+	public static Location maxOfArea(Location pos1, Location pos2) {
+		World world = pos1.getWorld();
+		int pos1X = (int) pos1.getX();
+		int pos2X = (int) pos2.getX();
+		int pos1Y = (int) pos1.getY();
+		int pos2Y = (int) pos2.getY();
+		int pos1Z = (int) pos1.getZ();
+		int pos2Z = (int) pos2.getZ();
+
+		// get bigger x, y, z
+		int bigX = Math.max(pos1X, pos2X);
+		int bigY = Math.max(pos1Y, pos2Y);
+		int bigZ = Math.max(pos1Z, pos2Z);
+
+		return new Location(world, bigX, bigY, bigZ);
+	}
+	
+	public static Location diff(Location pos1, Location pos2) { 
+		World world = pos1.getWorld();
+		int pos1X = (int) pos1.getX();
+		int pos2X = (int) pos2.getX();
+		int pos1Y = (int) pos1.getY();
+		int pos2Y = (int) pos2.getY();
+		int pos1Z = (int) pos1.getZ();
+		int pos2Z = (int) pos2.getZ();
+
+		// get difference
+		int dx = MathTool.getDiff(pos1X, pos2X);
+		int dy = MathTool.getDiff(pos1Y, pos2Y);
+		int dz = MathTool.getDiff(pos1Z, pos2Z);
+		
+		return new Location(world, dx, dy, dz);
+	}
 }

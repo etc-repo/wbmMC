@@ -293,4 +293,78 @@ public class BlockTool {
 			}
 		}
 	}
+
+	public static void walls(Location pos1, Location pos2, Material block) {
+		World world = pos1.getWorld();
+
+		// get difference
+		Location diff = LocationTool.diff(pos1, pos2);
+		int dx = diff.getBlockX();
+		int dy = diff.getBlockY();
+		int dz = diff.getBlockZ();
+
+		Location innerSmallPos = LocationTool.minOfArea(pos1, pos2).add(1, 0, 1);
+		Location innerBigPos = LocationTool.maxOfArea(pos1, pos2).subtract(1, 0, 1);
+
+		int smallX = innerSmallPos.getBlockX();
+		int smallY = innerSmallPos.getBlockY();
+		int smallZ = innerSmallPos.getBlockZ();
+
+		Location loc = new Location(world, smallX, smallY, smallZ);
+		for (int y = 0; y <= dy; y++) {
+			for (int z = 0; z <= dz; z++) {
+				for (int x = 0; x <= dx; x++) {
+					loc.add(x, y, z);
+
+					// check inner bound
+					if (!LocationTool.isIn(innerSmallPos, loc, innerBigPos)) {
+						// set type
+						loc.getBlock().setType(block);
+					}
+
+					// init
+					loc.setX(smallX);
+					loc.setY(smallY);
+					loc.setZ(smallZ);
+				}
+			}
+		}
+	}
+
+	public static void faces(Location pos1, Location pos2, Material block) {
+		World world = pos1.getWorld();
+
+		// get difference
+		Location diff = LocationTool.diff(pos1, pos2);
+		int dx = diff.getBlockX();
+		int dy = diff.getBlockY();
+		int dz = diff.getBlockZ();
+
+		Location innerSmallPos = LocationTool.minOfArea(pos1, pos2).add(1, 1, 1);
+		Location innerBigPos = LocationTool.maxOfArea(pos1, pos2).subtract(1, 1, 1);
+
+		int smallX = innerSmallPos.getBlockX();
+		int smallY = innerSmallPos.getBlockY();
+		int smallZ = innerSmallPos.getBlockZ();
+
+		Location loc = new Location(world, smallX, smallY, smallZ);
+		for (int y = 0; y <= dy; y++) {
+			for (int z = 0; z <= dz; z++) {
+				for (int x = 0; x <= dx; x++) {
+					loc.add(x, y, z);
+
+					// check inner bound
+					if (!LocationTool.isIn(innerSmallPos, loc, innerBigPos)) {
+						// set type
+						loc.getBlock().setType(block);
+					}
+
+					// init
+					loc.setX(smallX);
+					loc.setY(smallY);
+					loc.setZ(smallZ);
+				}
+			}
+		}
+	}
 }

@@ -1,9 +1,9 @@
 package com.wbm.plugin.util;
 
-import com.wbm.plugin.WbmMC;
+import org.bukkit.Bukkit;
 
 public class ServerTool {
 	public static boolean isPluginEnabled(String pluginName) {
-		return WbmMC.getInstance().getServer().getPluginManager().isPluginEnabled(pluginName);
+		return Bukkit.getServer().getPluginManager().isPluginEnabled(pluginName);
 	}
 }

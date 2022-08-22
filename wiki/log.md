@@ -71,8 +71,11 @@
 - Small update 
 - Release `0.3.11`
 
-
-
+# 2202-08-22
+- Add CryptoTool, WorldTool, Msgs class
+- Combine all message utils to Msgs class
+- From now on, class naming will be `<category>s` (e.g. MsgTool -> Msgs)
+- Release `0.3.12`
 
 
 

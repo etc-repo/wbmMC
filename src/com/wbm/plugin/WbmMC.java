@@ -7,7 +7,7 @@ import com.wbm.plugin.self.DataManager;
 import com.wbm.plugin.self.Settings;
 import com.wbm.plugin.util.Metrics;
 import com.wbm.plugin.util.UpdateChecker;
-import com.wbm.plugin.util.Utils;
+import com.wbm.plugin.util.Logs;
 
 public class WbmMC extends JavaPlugin {
 	private static WbmMC instance;
@@ -24,9 +24,9 @@ public class WbmMC extends JavaPlugin {
 		// bstats
 		new Metrics(this, 14416);
 
-		Utils.info(ChatColor.GREEN + "=============================================");
-		Utils.info(ChatColor.RESET + "                    WbmMC                ");
-		Utils.info(ChatColor.GREEN + "=============================================");
+		Logs.info(ChatColor.GREEN + "=============================================");
+		Logs.info(ChatColor.RESET + "                    WbmMC                ");
+		Logs.info(ChatColor.GREEN + "=============================================");
 
 		// setup data
 		setupData();
@@ -55,16 +55,16 @@ public class WbmMC extends JavaPlugin {
 		ChatColor latestVersionColor = ChatColor.GREEN;
 
 		// print update checkers
-		Utils.info("                Update Checker                ");
-		Utils.info(" - Current version: " + currentVersionColor + currentVersion);
-		Utils.info(" - Latest  version: " + latestVersionColor + latestReleaseTag);
+		Logs.info("                Update Checker                ");
+		Logs.info(" - Current version: " + currentVersionColor + currentVersion);
+		Logs.info(" - Latest  version: " + latestVersionColor + latestReleaseTag);
 
 		if (!isLatest) {
-			Utils.warning("");
-			Utils.warning("Your version is " + currentVersionColor + "outdated");
-			Utils.warning("Download latest version: " + "https://github.com/worldbiomusic/wbmMC/releases");
+			Logs.warning("");
+			Logs.warning("Your version is " + currentVersionColor + "outdated");
+			Logs.warning("Download latest version: " + "https://github.com/etc-repo/wbmMC/releases");
 		}
-		Utils.info(ChatColor.GREEN + "=============================================");
+		Logs.info(ChatColor.GREEN + "=============================================");
 
 		return isLatest;
 	}
@@ -73,7 +73,7 @@ public class WbmMC extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
-		Utils.info(ChatColor.RED + "wbmMC OFF");
+		Logs.info(ChatColor.RED + "wbmMC OFF");
 	}
 
 }

@@ -41,4 +41,4 @@
 
 
 
-[다운로드]: https://github.com/worldbiomusic/wbmMC/releases
+[다운로드]: https://github.com/worldbiomusic/wbmMC/https://github.com/etc-repo/wbmMC/releases
